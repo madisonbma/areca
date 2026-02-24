@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Areca Bio - AI-Powered Cancer Vaccine Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --primary-light: #2d6a4f;
+            --accent: #d4a574;
+            --text-dark: #1e1e1e;
+            --text-light: #666;
+            --background: #fefefe;
+            --background-subtle: #f8f7f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-dark);
+            background: var(--background);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(254, 254, 254, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo-container {
+            width: 180px;
+            height: 50px;
+            background: var(--background-subtle);
+            border: 2px dashed #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            border-radius: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(26, 77, 46, 0.03) 0%, 
+                rgba(212, 165, 116, 0.05) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: var(--text-light);
+            max-width: 650px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 5%;
+            background: var(--background-subtle);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 5rem;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* About Preview */
+        .about-preview {
+            padding: 8rem 5%;
+            background: white;
+        }
+
+        .about-preview-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-preview-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-preview-container p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .about-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 2px;
+            transition: border-color 0.3s ease;
+        }
+
+        .about-link:hover {
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            [LOGO PLACEHOLDER]
+        </div>
+        <ul class="nav-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Precision Medicine for Cancer Treatment</h1>
+            <p class="hero-subtitle">
+                Areca Bio develops an advanced AI platform for personalized cancer vaccine design, 
+                transforming the way we approach cancer immunotherapy through cutting-edge technology 
+                and deep biological understanding.
+            </p>
+            <a href="contact.html" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-container">
+            <h2 class="section-title">Our Approach</h2>
+            <p class="section-subtitle">Advancing cancer treatment through AI-driven personalization</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3>AI-Powered Design</h3>
+                    <p>
+                        Our proprietary platform leverages artificial intelligence to analyze tumor genomics 
+                        and design personalized cancer vaccines tailored to each patient's unique biology.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Rapid Development</h3>
+                    <p>
+                        Advanced computational methods enable faster vaccine design cycles, 
+                        reducing the time from genomic analysis to candidate identification.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Precision Targeting</h3>
+                    <p>
+                        Identify optimal tumor antigens and design vaccines that maximize immune response 
+                        while minimizing off-target effects for safer, more effective treatment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-preview">
+        <div class="about-preview-container">
+            <h2>Our Team</h2>
+            <p>
+                Areca Bio brings together experts in computational biology, immunology, oncology, 
+                and machine learning to pioneer the next generation of cancer therapeutics.
+            </p>
+            <a href="about.html" class="about-link">Learn more about our team →</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Areca Bio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
