@@ -332,7 +332,7 @@ footer p {
 /* Contact Section */
 .contact-section {
     min-height: calc(100vh - 80px);
-    margin-top: 80px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     padding: 6rem 5%;
@@ -448,8 +448,8 @@ footer p {
 .contact-image {
     width: 100%;
     aspect-ratio: 4/3;
-    background: var(--background-subtle);
-    border: 2px dashed #ddd;
+    /*background: var(--background-subtle);*/
+    /*border: 2px dashed #ddd; */
     display: flex;
     align-items: center;
     justify-content: center;
